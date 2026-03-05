@@ -52,7 +52,10 @@ app.use("/api/user", userRoutes); // ✅✅✅ ADDED
 app.get("/api/conversations/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
-    const uId = new Types.ObjectId(userId);
+if (!userId || userId.length !== 24) {
+  return res.status(400).json({ message: "Invalid user ID format" });
+}
+const uId = new Types.ObjectId(userId);
 
     const conversations: any[] = await Conversation.find({
       participants: { $in: [uId] },
