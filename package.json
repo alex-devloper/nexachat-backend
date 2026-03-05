@@ -2,11 +2,9 @@
   "name": "nexachat-backend",
   "version": "1.0.0",
   "description": "NexaChat backend server",
-  "main": "index.js",
+  "main": "railway.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "npm run build && node dist/server.js"
+    "start": "node railway.js"
   },
   "keywords": [],
   "author": "",
