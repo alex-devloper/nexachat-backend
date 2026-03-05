@@ -2,6 +2,8 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
+import dotenv from "dotenv";
+dotenv.config();
 import mongoose from "mongoose";
 import path from "path";
 
@@ -12,8 +14,7 @@ import userRoutes from "./routes/user"; // ✅✅✅ ADDED
 import Message from "./models/Message";
 import Conversation from "./models/Conversation";
 import User from "./models/User";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const { Types } = mongoose;
 
