@@ -19,6 +19,7 @@ import User from "./models/User";
 const { Types } = mongoose;
 
 // ================= DB =================
+console.log("MONGO_URI:", process.env.MONGO_URI);
 mongoose
   .connect(process.env.MONGO_URI as string)
   .then(() => console.log("MongoDB Connected ✅"))
