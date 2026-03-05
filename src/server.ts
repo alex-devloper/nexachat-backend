@@ -33,6 +33,9 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("NexaChat Backend Live 🚀");
+});
 app.use("/api/auth", authRoutes);
 
 // ✅ Upload route
