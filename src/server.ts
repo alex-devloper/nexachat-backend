@@ -15,7 +15,7 @@ import Message from "./models/Message";
 import Conversation from "./models/Conversation";
 import User from "./models/User";
 
-
+console.log("ENV DATABASE_URL =", process.env.DATABASE_URL);
 const { Types } = mongoose;
 
 // ================= DB =================
