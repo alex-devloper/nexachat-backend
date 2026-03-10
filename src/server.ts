@@ -15,6 +15,7 @@ import Message from "./models/Message";
 import Conversation from "./models/Conversation";
 import User from "./models/User";
 
+console.log("DATABASE_URL =", process.env.DATABASE_URL);
 console.log("ENV DATABASE_URL =", process.env.DATABASE_URL);
 const { Types } = mongoose;
 
@@ -28,6 +29,11 @@ if (!DB) {
 
 console.log("Connecting to MongoDB...");
 
+mongoose.connect(
+"mongodb+srv://nexachat_user:alexchiraju112@cluster0.4ctcvfg.mongodb.net/nexachat"
+)
+.then(()=>console.log("MongoDB Connected"))
+.catch(err=>console.log(err))
 mongoose
   .connect(DB)
   .then(() => console.log("MongoDB Connected ✅"))
