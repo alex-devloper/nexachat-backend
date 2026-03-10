@@ -3,7 +3,7 @@ import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: ".env" });
 import mongoose from "mongoose";
 import path from "path";
 
@@ -19,12 +19,22 @@ import User from "./models/User";
 const { Types } = mongoose;
 
 // ================= DB =================
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
+const DB = process.env.DATABASE_URL;
+
+if (!DB) {
+  console.log("DATABASE_URL missing ❌");
+  process.exit(1);
+}
+
+console.log("Connecting to MongoDB...");
 
 mongoose
-  .connect(process.env.DATABASE_URL as string)
+  .connect(DB)
   .then(() => console.log("MongoDB Connected ✅"))
-  .catch((err) => console.log("Mongo Error ❌", err));
+  .catch((err) => {
+    console.log("Mongo Error ❌", err);
+    process.exit(1);
+  });
 
 const app = express();
 app.use(cors());
