@@ -3,7 +3,7 @@ import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
-dotenv.config({ path: ".env" });
+dotenv.config();
 import mongoose from "mongoose";
 import path from "path";
 
@@ -15,25 +15,19 @@ import Message from "./models/Message";
 import Conversation from "./models/Conversation";
 import User from "./models/User";
 
-console.log("DATABASE_URL =", process.env.DATABASE_URL);
-console.log("ENV DATABASE_URL =", process.env.DATABASE_URL);
+
 const { Types } = mongoose;
 
 // ================= DB =================
 const DB = process.env.DATABASE_URL;
 
 if (!DB) {
-  console.log("DATABASE_URL missing ❌");
+  console.log("❌ DATABASE_URL missing");
   process.exit(1);
 }
 
-console.log("Connecting to MongoDB...");
+console.log("DATABASE_URL loaded");
 
-mongoose.connect(
-"mongodb+srv://nexachat_user:alexchiraju112@cluster0.4ctcvfg.mongodb.net/nexachat"
-)
-.then(()=>console.log("MongoDB Connected"))
-.catch(err=>console.log(err))
 mongoose
   .connect(DB)
   .then(() => console.log("MongoDB Connected ✅"))
